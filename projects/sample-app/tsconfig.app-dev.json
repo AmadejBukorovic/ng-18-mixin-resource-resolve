@@ -1,0 +1,19 @@
+/* Configuration for ng serve that maps the typescript source for the sample library to it's source, not build output. */
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/app",
+    "types": [],
+    "paths": {
+      "sample-lib": [
+        "../sample-lib/src/public-api.ts"
+      ]
+    }
+  },
+  "files": [
+    "src/main.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
+}
