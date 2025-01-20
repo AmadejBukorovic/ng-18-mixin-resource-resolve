@@ -1,13 +1,13 @@
 @use '../../../../shared-styles';
 
-// Style 1: as expected, the url() path needs to be relative to the SCSS file containing the url() declaration.
+// Resolution 1: as expected, the url() path needs to be relative to the SCSS file containing the url() declaration.
 .lib-icon-container-1 {
   // The background url needs to be relative to the entry caller:
   background-image: url('../../../../shared-styles/resources/add_a_photo.svg');
 }
 
-// Style 2: same as in previous versions, calling a mixin that generates the url() value requires a path relative to the
-// calling ("entry") scss file. The path is the same as above. See "app.component.scss" to spot the different
+// Resolution 2: same as in previous versions, calling a mixin that generates the url() value requires a path relative to the
+// calling ("entry") scss file. The path is the same as above. See the application's "styles.scss" to spot the different
 // behavior inside an application, as introduced with v18+.
 .lib-icon-container-2 {
   @include shared-styles.icon-size-24('../../../../shared-styles/resources/add_a_photo.svg');
