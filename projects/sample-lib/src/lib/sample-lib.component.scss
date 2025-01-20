@@ -1,0 +1,21 @@
+@use '../../../../shared-styles';
+
+// Style 1: as expected, the url() path needs to be relative to the SCSS file.
+.lib-icon-container-2 {
+  // The background url needs to be relative to the entry caller:
+  background-image: url('../../../../shared-styles/resources/add_a_photo.svg');
+}
+
+// Style 2: calling a mixin which generates the background-image style. The path is the same as above, meaning relative
+// to the calling ("entry") scss file. This behaves in the same minor as prior to 18. See "app.component.scss" to
+// spot the different behavior inside an application.
+.lib-icon-container-1 {
+  @include shared-styles.icon-size-24('../../../../shared-styles/resources/add_a_photo.svg');
+}
+
+// Style 3: sharing a mixin that will generate the background-image url for us. Because it contains a url path that
+// is relative to the mixin file location, and not the caller ("entry") scss file, it cannot be used anymore if it
+// is also used inside an application.
+.lib-icon-container-3 {
+  @include shared-styles.icon-add-photo-24();
+}
