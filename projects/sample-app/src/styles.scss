@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@use '../../../shared-styles';
+
+// Style 1: as expected, the url() path needs to be relative to the SCSS file.
+.app-icon-container-1 {
+  // The background url needs to be relative to the entry caller:
+  background-image: url('../../../shared-styles/resources/add_a_photo.svg');
+}
+
+// Style 2: calling a mixin which generates the background-image style now requires the path to be relative to
+// the mixin file location, not the "entry" SCSS file. This behavior has changed with v18, as it previously required
+// the path to be relative to the calling ("entry") SCSS file. See "sample-lib.component.scss" to/ spot the different
+// behavior inside a library.
+.app-icon-container-2 {
+  @include shared-styles.icon-size-24('../resources/add_a_photo.svg');
+}
